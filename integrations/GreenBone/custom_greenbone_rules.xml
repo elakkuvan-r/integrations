@@ -1,0 +1,38 @@
+<group name="greenbone,vulnerability-detection,">
+
+  <!-- Base rule: matches any Greenbone JSON record, level 0 so it never alerts on its own -->
+  <rule id="110500" level="0">
+    <decoded_as>json</decoded_as>
+    <field name="greenbone.source">greenbone</field>
+    <description>Greenbone vulnerability scan result</description>
+  </rule>
+
+  <!-- Low: CVSS 0.0-3.9 -->
+  <rule id="110501" level="4">
+    <if_sid>110500</if_sid>
+    <field name="greenbone.severity_label">low</field>
+    <description>Greenbone: Low severity finding on $(greenbone.host) - $(greenbone.vulnerability_name)</description>
+  </rule>
+
+  <!-- Medium: CVSS 4.0-6.9 -->
+  <rule id="110502" level="9">
+    <if_sid>110500</if_sid>
+    <field name="greenbone.severity_label">medium</field>
+    <description>Greenbone: Medium severity finding on $(greenbone.host) - $(greenbone.vulnerability_name)</description>
+  </rule>
+
+  <!-- High: CVSS 7.0-8.9 -->
+  <rule id="110503" level="13">
+    <if_sid>110500</if_sid>
+    <field name="greenbone.severity_label">high</field>
+    <description>Greenbone: High severity finding on $(greenbone.host) - $(greenbone.vulnerability_name) - CVE: $(greenbone.cve)</description>
+  </rule>
+
+  <!-- Critical: CVSS 9.0-10.0 -->
+  <rule id="110504" level="15">
+    <if_sid>110500</if_sid>
+    <field name="greenbone.severity_label">critical</field>
+    <description>Greenbone: CRITICAL finding on $(greenbone.host) - $(greenbone.vulnerability_name) - CVE: $(greenbone.cve)</description>
+  </rule>
+
+</group>
