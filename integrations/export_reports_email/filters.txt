@@ -1,0 +1,16 @@
+# Supported operators (one rule per line, lines starting with # are ignored):
+#
+#   is:<field>=<value>
+#   is_not:<field>=<value>
+#   is_one_of:<field>=<value1>,<value2>,...
+#   is_not_one_of:<field>=<value1>,<value2>,...
+#   exists:<field>
+#   does_not_exist:<field>
+#
+# Examples:
+#   is:agent.id=001
+#   is_not:rule.id=500
+#   is_one_of:rule.level=10,11,12
+#   is_not_one_of:data.example=ubuntu,windows
+#   exists:data.srcip
+#   does_not_exist:data.dstip
