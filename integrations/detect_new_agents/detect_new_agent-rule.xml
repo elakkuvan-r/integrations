@@ -1,0 +1,8 @@
+<group name="agent_enrollment,">
+  <rule id="100110" level="6">
+    <decoded_as>json</decoded_as>
+    <field name="integration">new-agent-detector</field>
+    <description>New Wazuh agent enrolled: $(agent_info.name) (ID $(agent_info.id), IP $(agent_info.ip))</description>
+    <options>alert_by_email</options>
+  </rule>
+</group>
